@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class PlayersManager {
     private HashMap<Integer, Player> players = new HashMap<>();
@@ -10,7 +11,12 @@ public class PlayersManager {
         return autorizatedPlayer;
     }
 
-    Player createPlayer(String login, String password) {
+    Player createPlayer(Scanner scanner) {
+        scanner.nextLine();
+        System.out.println("Придумайте логин");
+        String login = scanner.nextLine();
+        System.out.println("Придумайте пароль");
+        String password = scanner.nextLine();
         int count = 0;
         Player newPlayer = new Player();
         for (Player player : players.values()) {

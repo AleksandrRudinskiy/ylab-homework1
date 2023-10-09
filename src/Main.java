@@ -15,12 +15,8 @@ public class Main {
             if (count == 0) {
                 break;
             } else if (count == 1) {
-                scanner.nextLine();
-                System.out.println("Придумайте логин");
-                String newlogin = scanner.nextLine();
-                System.out.println("Придумайте пароль");
-                String newPassword = scanner.nextLine();
-                playersManager.createPlayer(newlogin, newPassword);
+
+                playersManager.createPlayer(scanner);
 
             } else if (count == 2) {
                 scanner.nextLine();
