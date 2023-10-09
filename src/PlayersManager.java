@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -61,19 +62,15 @@ public class PlayersManager {
         return findPlayer;
     }
 
-    void getPlayerBalance(){
+    void getPlayerBalance() {
         int balance;
         if (autorizatedPlayer != null) {
-             balance = autorizatedPlayer.getBalance();
+            balance = autorizatedPlayer.getBalance();
             System.out.println("Баланс игрока = " + balance);
         } else {
             System.out.println("Сначало необходимо авторизоваться!");
         }
     }
-
-
-
-
 
     void printPlayersList() {
         for (Integer i : players.keySet()) {
@@ -83,14 +80,11 @@ public class PlayersManager {
 
     Player creditBalanse(Scanner scanner) {
         Player returnedPlayer = null;
-
-
-
         if (autorizatedPlayer == null) {
             System.out.println("Сначало необходимо авторизоваться!");
         } else {
             System.out.println("Введите сумму пополнения");
-           int sum = scanner.nextInt();
+            int sum = scanner.nextInt();
             Transaction transaction = new Transaction();
             id++;
             transaction.setId(id);
@@ -104,11 +98,13 @@ public class PlayersManager {
         return returnedPlayer;
     }
 
-    Player debetBalanse(int sum) {
+    Player debetBalanse(Scanner scanner) {
         Player returnedPlayer = null;
         if (autorizatedPlayer == null) {
-            System.out.println("Сначало войдите в аккаунт");
+            System.out.println("Сначало необходимо авторизоваться!");
         } else {
+            System.out.println("Введите сумму снятия");
+            int sum = scanner.nextInt();
             Transaction transaction = new Transaction();
             id++;
             transaction.setId(id);
@@ -127,6 +123,12 @@ public class PlayersManager {
     }
 
     List<Transaction> showTransactionsOfPlayer() {
-        return autorizatedPlayer.getPlayerTransactions();
+        List<Transaction> list = new ArrayList<>();
+        if (autorizatedPlayer == null) {
+            System.out.println("Сначало необходимо авторизоваться!");
+        } else {
+            list.addAll(autorizatedPlayer.getPlayerTransactions());
+        }
+        return list;
     }
 }

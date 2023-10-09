@@ -8,7 +8,6 @@ public class Player {
     private int balance;
 
 
-
     private List<Transaction> PlayerTransactions = new ArrayList<>();
 
     public List<Transaction> getPlayerTransactions() {
@@ -16,7 +15,7 @@ public class Player {
     }
 
     public Player() {
-       balance = 0;
+        balance = 0;
     }
 
     public String getLogin() {
@@ -55,7 +54,7 @@ public class Player {
     public String toString() {
         return "Player{" +
                 "login='" + login + '\'' +
-                ", password length='" + password.length()+ '\'' +
+                ", password length='" + password.length() + '\'' +
                 ", playerId=" + playerId +
                 ", balance=" + balance +
                 ", transactions=" + PlayerTransactions.size() +

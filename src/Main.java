@@ -22,14 +22,7 @@ public class Main {
             } else if (count == 6) {
                 System.out.println(playersManager.showTransactionsOfPlayer());
             } else if (count == 7) {
-                if (playersManager.getAutorizatedPlayer() != null) {
-                    System.out.println("Введите сумму снятия");
-                    int sum = scanner.nextInt();
-                    playersManager.debetBalanse(sum);
-                } else {
-                    System.out.println("Сначало необходимо авторизоваться!");
-                }
-
+                playersManager.debetBalanse(scanner);
             } else {
                 System.out.println("Такой команды нет!");
             }
@@ -46,7 +39,5 @@ public class Main {
         System.out.println("6 - Просмотр истории пополнения/снятия средств игроком");
         System.out.println("7 - Дебет на игрока (снятие средств)");
         System.out.println("0 - Выход");
-
-
     }
 }
