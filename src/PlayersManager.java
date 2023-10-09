@@ -37,7 +37,12 @@ public class PlayersManager {
         return newPlayer;
     }
 
-    Player autorization(String login, String password) {
+    Player autorization(Scanner scanner) {
+        scanner.nextLine();
+        System.out.println("Введите логин");
+        String login = scanner.nextLine();
+        System.out.println("Введите пароль");
+        String password = scanner.nextLine();
         int count = 0;
         Player findPlayer = null;
         for (Integer id : players.keySet()) {
@@ -56,17 +61,36 @@ public class PlayersManager {
         return findPlayer;
     }
 
+    void getPlayerBalance(){
+        int balance;
+        if (autorizatedPlayer != null) {
+             balance = autorizatedPlayer.getBalance();
+            System.out.println("Баланс игрока = " + balance);
+        } else {
+            System.out.println("Сначало необходимо авторизоваться!");
+        }
+    }
+
+
+
+
+
     void printPlayersList() {
         for (Integer i : players.keySet()) {
             System.out.println(players.get(i));
         }
     }
 
-    Player creditBalanse(int sum) {
+    Player creditBalanse(Scanner scanner) {
         Player returnedPlayer = null;
+
+
+
         if (autorizatedPlayer == null) {
-            System.out.println("Сначало войдите в аккаунт");
+            System.out.println("Сначало необходимо авторизоваться!");
         } else {
+            System.out.println("Введите сумму пополнения");
+           int sum = scanner.nextInt();
             Transaction transaction = new Transaction();
             id++;
             transaction.setId(id);
